@@ -1,0 +1,40 @@
+{
+	"name": "cucumber-json-formatter",
+	"publisher": "xletohic",
+	"displayName": "Cucumber JSON formatter",
+	"description": "Format JSON in your .feature files with indentation detection",
+	"repository": "https://github.com/xletohic-thefork/cucumber-json-formatter.git",
+	"version": "0.3.0",
+	"engines": {
+		"vscode": "^1.31.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.formatCucumberFeatureJSON"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [
+			{
+				"command": "extension.formatCucumberFeatureJSON",
+				"title": "Format JSON on the current .feature file"
+			}
+		]
+	},
+	"scripts": {
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"test": "node ./node_modules/vscode/bin/test"
+	},
+	"devDependencies": {
+		"typescript": "^3.3.1",
+		"vscode": "^1.1.28",
+		"eslint": "^5.13.0",
+		"@types/node": "^10.12.21",
+		"@types/mocha": "^2.2.42"
+	},
+	"dependencies": {
+		"indent-string": "^3.2.0"
+	}
+}
