@@ -4,7 +4,7 @@
 	"displayName": "Cucumber JSON formatter",
 	"description": "Format JSON in your .feature files with indentation detection",
 	"repository": "https://github.com/xletohic-thefork/cucumber-json-formatter.git",
-	"version": "1.0.0",
+	"version": "1.1.0",
 	"engines": {
 		"vscode": "^1.31.0"
 	},
