@@ -8,7 +8,7 @@ This extension allow you to automatically indent the JSON in your `.feature` fil
 3. Select `Format JSON on the current .feature file`
 
 ## Incoming features
-- [ ] GitHub Repo
+- [x] GitHub Repo
 - [ ] Indent size option
 
 ## Example
