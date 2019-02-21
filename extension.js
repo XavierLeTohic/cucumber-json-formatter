@@ -23,6 +23,7 @@ function activate(context) {
 		// Get all content of opened document
 		const content = editor.document.getText();
 		const regex = /"""(.*?)\"""/sg;
+		let success = 0;
 
 		const formattedContent = content.replace(regex, (match, offset, index) => {
 			let json = null;
@@ -30,9 +31,25 @@ function activate(context) {
 			try {
 				json = JSON.parse(offset);
 			} catch (error) {
-				console.log(error);
-				vscode.window.showInformationMessage('Invalid JSON in feature\'s triple quotes');
-				return;
+				const allLines = content.split(/\n/g);
+				const compute = allLines.reduce((acc, line) => {
+					if(acc.charSize < index) {
+						acc.line += 1;
+						acc.charSize += line.length
+					}
+
+					return acc;
+				}, {
+					line: 0,
+					charSize: 0
+				});
+
+				if(error.message) {
+					console.error(`Line ${compute.line}: Not a JSON object or invalid JSON detected: ${error.message}`);
+				}				
+
+				vscode.window.showErrorMessage(`Line ${compute.line}: Not a JSON object or invalid JSON detected`);
+				return match;
 			}
 
 			const formattedJSON = JSON.stringify(json, null, 2);
@@ -41,6 +58,7 @@ function activate(context) {
 				.split(/\n/g)
 				.reverse();
 			const indentSize = stepDefinition.search(/\S|$/) + 2;
+			success += 1;
 			return `"""\n${indentString(`${formattedJSON}\n"""`, indentSize)}`;
 		});
 
@@ -54,7 +72,11 @@ function activate(context) {
 				editor.edit(edit => edit.replace(textRange, formattedContent));
 		} catch (err) {
 			console.log(err)
-			vscode.window.showInformationMessage('Could not format JSON, an error occurred.');
+			vscode.window.showErrorMessage('Could not format JSON, an error occurred.');
+		}
+
+		if(success > 0) {
+			vscode.window.showInformationMessage(`${success} Cucumber steps formatted!`);
 		}
 	});
 
