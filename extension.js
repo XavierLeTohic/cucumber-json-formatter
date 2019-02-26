@@ -33,20 +33,20 @@ function activate(context) {
 			} catch (error) {
 				const allLines = content.split(/\n/g);
 				const compute = allLines.reduce((acc, line) => {
-					if(acc.charSize < index) {
+					if (acc.charSize < index) {
 						acc.line += 1;
 						acc.charSize += line.length
 					}
 
 					return acc;
 				}, {
-					line: 0,
-					charSize: 0
-				});
+						line: 0,
+						charSize: 0
+					});
 
-				if(error.message) {
+				if (error.message) {
 					console.error(`Line ${compute.line}: Not a JSON object or invalid JSON detected: ${error.message}`);
-				}				
+				}
 
 				vscode.window.showErrorMessage(`Line ${compute.line}: Not a JSON object or invalid JSON detected`);
 				return match;
@@ -65,17 +65,17 @@ function activate(context) {
 		try {
 			const firstLine = editor.document.lineAt(0);
 			const lastLine = editor.document.lineAt(editor.document.lineCount - 1);
-			const textRange = new vscode.Range(0, 
-				firstLine.range.start.character, 
-				editor.document.lineCount - 1, 
+			const textRange = new vscode.Range(0,
+				firstLine.range.start.character,
+				editor.document.lineCount - 1,
 				lastLine.range.end.character);
-				editor.edit(edit => edit.replace(textRange, formattedContent));
+			editor.edit(edit => edit.replace(textRange, formattedContent));
 		} catch (err) {
 			console.log(err)
 			vscode.window.showErrorMessage('Could not format JSON, an error occurred.');
 		}
 
-		if(success > 0) {
+		if (success > 0) {
 			vscode.window.showInformationMessage(`${success} Cucumber steps formatted!`);
 		}
 	});
@@ -85,7 +85,7 @@ function activate(context) {
 exports.activate = activate;
 
 // this method is called when your extension is deactivated
-function deactivate() {}
+function deactivate() { }
 
 module.exports = {
 	activate,
