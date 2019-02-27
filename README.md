@@ -1,6 +1,6 @@
 # Cucumber JSON formatter
 
-This extension allow you to automatically indent the JSON in your `.feature` files.
+This extension allow you to automatically indent all the JSON in the current opened `.feature` file.
 
 [GitHub repository](https://github.com/xletohic-thefork/cucumber-json-formatter)\
 [Create an issue](https://github.com/xletohic-thefork/cucumber-json-formatter/issues/new)\
@@ -12,9 +12,10 @@ This extension allow you to automatically indent the JSON in your `.feature` fil
 3. Select `Format JSON on the current .feature file`
 
 ## Incoming features
-- [ ] Get indent size from .editorconfig
-- [ ] Prompt to ask indent size
-- [ ] Indent all feature file (scenarios + steps + JSON)
+- [x] Indent size from editor config (.editorconfig or VScode settings)
+- [ ] Command that prompt a popup to ask for a custom indent size
+- [ ] Command that indent all JSON on all .feature files
+- [ ] Command that indent everything on the current .feature file
 
 ## Example
 
@@ -23,12 +24,12 @@ Before
   Scenario: Should format JSON
     Given the following JSON:
       """
-      {
-      "hello": "world",
-      "object":{
-      "john": "doe"  
-      }
-      }
+{
+"hello": "world",
+"object":{
+"john": "doe"  
+}
+}
       """
 ```
 

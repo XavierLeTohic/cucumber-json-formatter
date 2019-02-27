@@ -8,11 +8,18 @@ function activate(context) {
 
 	let disposable = vscode.commands.registerCommand('extension.formatCucumberFeatureJSON', function () {
 
-		var editor = vscode.window.activeTextEditor;
+		const editor = vscode.window.activeTextEditor;
 
 		if (!editor) {
-			vscode.window.showInformationMessage('Please open a cucumber feature file');
-			return; // No open text editor
+			vscode.window.showErrorMessage('Please open a .feature file to run this command')
+			return;
+		}
+
+		const { languageId, uri } = editor.document;
+
+		if (languageId !== 'feature') {
+			vscode.window.showErrorMessage('This command can only be used on a opened .feature file')
+			return;
 		}
 
 		// Get all content of opened document
@@ -47,14 +54,15 @@ function activate(context) {
 				return match;
 			}
 
-			const formattedJSON = JSON.stringify(json, null, 2);
+			const tabSize = editor.options.tabSize === 'auto' ? indentSize : editor.options.tabSize;
+			const formattedJSON = JSON.stringify(json, null, tabSize);
 			const [tripleQuotes, stepDefinition] = content
 				.slice(0, index)
 				.split(/\n/g)
 				.reverse();
-			const indentSize = tripleQuotes.search(/\S|$/);
+			const fileIndentSize = tripleQuotes.search(/\S|$/);
 			success += 1;
-			return `"""\n${indentString(`${formattedJSON}\n"""`, indentSize)}`;
+			return `"""\n${indentString(`${formattedJSON}\n"""`, fileIndentSize)}`;
 		});
 
 		try {
