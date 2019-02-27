@@ -1,10 +1,5 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
 const indentString = require('indent-string');
-
-// this method is called when your extension is activated
-// your extension is activated the very first time the command is executed
 
 /**
  * @param {vscode.ExtensionContext} context
@@ -57,7 +52,7 @@ function activate(context) {
 				.slice(0, index)
 				.split(/\n/g)
 				.reverse();
-			const indentSize = stepDefinition.search(/\S|$/) + 2;
+			const indentSize = tripleQuotes.search(/\S|$/);
 			success += 1;
 			return `"""\n${indentString(`${formattedJSON}\n"""`, indentSize)}`;
 		});
