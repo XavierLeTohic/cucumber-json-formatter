@@ -2,8 +2,8 @@
 
 This extension allow you to automatically indent all the JSON in the current opened `.feature` file.
 
-[GitHub repository](https://github.com/xletohic-thefork/cucumber-json-formatter)\
-[Create an issue](https://github.com/xletohic-thefork/cucumber-json-formatter/issues/new)\
+[GitHub repository](https://github.com/XavierLeTohic/cucumber-json-formatter)\
+[Create an issue](https://github.com/XavierLeTohic/cucumber-json-formatter/issues/new)\
 [Write a review](https://marketplace.visualstudio.com/items?itemName=xletohic.cucumber-json-formatter#review-details)
 
 ## Usage

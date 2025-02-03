@@ -3,7 +3,7 @@
 	"publisher": "xletohic",
 	"displayName": "Cucumber JSON formatter",
 	"description": "Automatically formats JSON within Cucumber .feature files while preserving existing indentation",
-	"repository": "https://github.com/xletohic-thefork/cucumber-json-formatter.git",
+	"repository": "https://github.com/XavierLeTohic/cucumber-json-formatter",
 	"version": "2.2.0",
 	"engines": {
 		"vscode": "^1.96.0"
