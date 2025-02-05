@@ -8,7 +8,7 @@ This extension allow you to automatically indent all the JSON in the current ope
 
 ## Usage
 1. Open your `.feature` file
-2. Open command list: `CMD + Maj + P`
+2. Open command list: `Ctrl+Shift+P` on Windows/Linux or `CMD + Maj + P` on MacOS.
 3. Select `Format JSON on the current .feature file`
 
 ## Incoming features
