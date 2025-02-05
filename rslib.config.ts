@@ -15,5 +15,11 @@ export default defineConfig({
   ],
   output: {
     target: 'node',
+    copy: [
+      {
+        from: './images/',
+        to: './images/',
+      },
+    ]
   },
 });

@@ -25,7 +25,7 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run build",
-		"build": "rslib build && cp -R images dist",
+		"build": "rslib build",
 		"dev": "rslib build --watch",
 		"watch": "rslib build --watch",
 		"test": "jest"
