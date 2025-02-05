@@ -1,8 +1,8 @@
 {
-	"name": "cucumber-json-formatter",
-	"publisher": "xletohic",
-	"displayName": "Cucumber JSON formatter",
-	"description": "Automatically formats JSON within Cucumber .feature files while preserving existing indentation",
+	"name": "cucumber-feature-json-formatter",
+	"publisher": "XavierLeTohic",
+	"displayName": "Cucumber feature JSON formatter",
+	"description": "Format JSON in .feature files preserving existing indentation",
 	"repository": "https://github.com/XavierLeTohic/cucumber-json-formatter",
 	"version": "2.2.0",
 	"engines": {
@@ -25,7 +25,7 @@
 	},
 	"scripts": {
 		"vscode:prepublish": "npm run build",
-		"build": "rslib build",
+		"build": "rslib build && cp -R images dist",
 		"dev": "rslib build --watch",
 		"watch": "rslib build --watch",
 		"test": "jest"
